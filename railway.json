@@ -3,7 +3,7 @@
   "root": "backend-api",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "npm install"
+    "buildCommand": "npm install --production"
   },
   "deploy": {
     "startCommand": "node server.js",
@@ -11,12 +11,5 @@
     "restartPolicyMaxRetries": 10,
     "healthcheckPath": "/health",
     "healthcheckTimeout": 30
-  },
-  "environments": {
-    "production": {
-      "build": {
-        "buildCommand": "npm ci --production"
-      }
-    }
   }
 }
