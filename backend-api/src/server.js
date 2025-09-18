@@ -39,6 +39,7 @@ import bannerRoutes from './routes/banner.routes.js';
 import uploadRoutes from './routes/upload.routes.js';
 import notificationRoutes from './routes/notification.routes.js';
 import discountRoutes from './routes/discount.routes.js';
+import initDbRoutes from './routes/init-db.routes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -182,6 +183,29 @@ app.use('/api/dashboard', dashboardRoutes);
 
 // 轮播图管理
 app.use('/api', bannerRoutes);
+
+// 临时数据库初始化端点（用完删除）
+app.get('/init-database-now', async (req, res) => {
+  try {
+    const key = req.query.key;
+    if (key !== 'init2025') {
+      return res.status(403).send('访问：/init-database-now?key=init2025');
+    }
+    
+    const { sequelize } = await import('./models/index.js');
+    
+    // 强制同步所有表
+    await sequelize.sync({ force: true });
+    
+    res.send(`
+      <h1>✅ 数据库初始化成功！</h1>
+      <p>所有表已创建</p>
+      <p style="color: red;">⚠️ 请立即删除此端点！</p>
+    `);
+  } catch (error) {
+    res.status(500).send(`初始化失败：${error.message}`);
+  }
+});
 
 // 文件上传
 app.use('/api/upload', uploadRoutes);
