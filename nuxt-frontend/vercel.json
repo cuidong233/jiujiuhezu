@@ -1,9 +1,12 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".output/public",
-  "devCommand": "npm run dev",
+  "functions": {
+    "api/index.mjs": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "buildCommand": "npx nuxi build",
+  "framework": null,
   "installCommand": "npm install",
-  "framework": "nuxtjs",
   "regions": ["hkg1"],
   "env": {
     "NODE_ENV": "production"
@@ -11,7 +14,14 @@
   "build": {
     "env": {
       "NUXT_PUBLIC_API_BASE": "$NUXT_PUBLIC_API_BASE",
-      "NUXT_PUBLIC_SITE_URL": "$NUXT_PUBLIC_SITE_URL"
+      "NUXT_PUBLIC_SITE_URL": "$NUXT_PUBLIC_SITE_URL",
+      "NITRO_PRESET": "vercel"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ]
 }
