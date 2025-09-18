@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: jiujiu-backend
+    env: node
+    region: singapore
+    buildCommand: cd backend-api && npm install
+    startCommand: cd backend-api && node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3002
+      - key: DB_HOST
+        value: mysql-33d17299-cuidong111-28e9.e.aivencloud.com
+      - key: DB_PORT
+        value: 16966
+      - key: DB_NAME
+        value: defaultdb
+      - key: DB_USER
+        value: avnadmin
+      - key: DB_PASSWORD
+        value: AVNS_SIHyKQvzVeOMLY2Y4R1
+      - key: JWT_SECRET
+        value: jiujiu-admin-secret-key-2024

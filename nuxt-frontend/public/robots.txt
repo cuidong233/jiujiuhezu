@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# 允许抓取所有页面
+Allow: /community
+Allow: /article/*
+Allow: /about-us
+Allow: /service
+Allow: /faq
+
+# 禁止抓取的页面（如果有）
+# Disallow: /admin
+# Disallow: /api
+
+# 站点地图位置
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# 抓取延迟（可选）
+Crawl-delay: 1 

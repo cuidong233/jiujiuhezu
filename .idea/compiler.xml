@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="renren-dynamic-datasource (2) (io.renren)" />
+        <module name="renren-api" />
+        <module name="renren-api (2)" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jiujiu-product" target="17" />
+      <module name="jiujiu-product (1)" target="1.7" />
+      <module name="project" target="1.5" />
+      <module name="renren-admin" target="17" />
+      <module name="renren-admin (1)" target="17" />
+      <module name="renren-admin (2)" target="1.5" />
+      <module name="renren-admin (3)" target="17" />
+      <module name="renren-api (1)" target="16" />
+      <module name="renren-api (3)" target="16" />
+      <module name="renren-api (4)" target="17" />
+      <module name="renren-common" target="17" />
+      <module name="renren-common (1)" target="1.7" />
+      <module name="renren-dynamic-datasource" target="17" />
+      <module name="renren-dynamic-datasource (1)" target="1.7" />
+      <module name="renren-generator" target="1.8" />
+      <module name="renren-generator (1)" target="1.8" />
+      <module name="renren-generator (2)" target="1.8" />
+      <module name="renren-generator (3)" target="1.8" />
+      <module name="renren-generator (4)" target="1.8" />
+      <module name="renren-generator (5)" target="1.8" />
+      <module name="renren-security (1)" target="17" />
+      <module name="renren-security (2)" target="17" />
+      <module name="renren-security (3)" target="17" />
+      <module name="renren-security (4)" target="17" />
+      <module name="renren-security (5)" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="jiujiu-product" options="-parameters --enable-preview" />
+      <module name="jiujiu-product (1)" options="-parameters" />
+      <module name="renren-admin" options="-parameters --enable-preview" />
+      <module name="renren-admin (1)" options="-parameters --enable-preview" />
+      <module name="renren-admin (3)" options="-parameters --enable-preview" />
+      <module name="renren-api" options="-parameters" />
+      <module name="renren-api (1)" options="-parameters" />
+      <module name="renren-api (2)" options="-parameters" />
+      <module name="renren-api (3)" options="-parameters" />
+      <module name="renren-api (4)" options="-parameters --enable-preview" />
+      <module name="renren-common" options="-parameters --enable-preview" />
+      <module name="renren-common (1)" options="-parameters" />
+      <module name="renren-dynamic-datasource" options="-parameters --enable-preview" />
+      <module name="renren-dynamic-datasource (1)" options="-parameters" />
+      <module name="renren-dynamic-datasource (2) (io.renren)" options="-parameters" />
+      <module name="renren-generator" options="-parameters" />
+      <module name="renren-generator (1)" options="-parameters" />
+      <module name="renren-generator (2)" options="-parameters" />
+      <module name="renren-generator (3)" options="-parameters" />
+      <module name="renren-generator (4)" options="-parameters" />
+      <module name="renren-generator (5)" options="-parameters" />
+    </option>
+  </component>
+</project>

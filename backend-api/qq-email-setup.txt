@@ -1,0 +1,19 @@
+QQ邮箱配置步骤：
+
+1. 登录QQ邮箱网页版：https://mail.qq.com
+
+2. 开启SMTP服务：
+   - 点击"设置" → "账户"
+   - 找到"POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务"
+   - 开启"SMTP服务"
+   - 点击"生成授权码"
+   - 使用手机QQ扫码或发送短信验证
+   - 获得16位授权码（如：abcd efgh ijkl mnop）
+
+3. 修改.env文件：
+   SMTP_HOST=smtp.qq.com
+   SMTP_PORT=465
+   SMTP_USER=您的QQ邮箱@qq.com
+   SMTP_PASS=16位授权码（去掉空格）
+
+4. 重启后端服务即可使用

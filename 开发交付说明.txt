@@ -1,0 +1,24 @@
+【开发交付说明】
+
+1. 交付内容
+- 前端项目：nuxt-frontend（用户主站，Vue3+Nuxt3+TypeScript）
+- 后端项目：renren-api（Spring Boot+MyBatis-Plus）
+- 后台管理系统前端：renren-admin-frontend（Vue3+ElementPlus）
+- 配套配置文件、API接口、Nginx反向代理配置、自动化测试脚本
+
+2. 目录结构
+project/
+├── nuxt-frontend/           # 用户前台
+├── renren-api/              # 后端API服务
+├── renren-admin-frontend/   # 后台管理系统前端
+├── ...（其他文档、脚本等）
+
+3. 主要功能
+- 用户注册/登录、商品浏览、下单、支付、FAQ、工单、收藏、返现推广等全链路功能
+- 后端API接口全部实现，支持动态数据管理
+- 前端与后端API已全部对接，数据动态化
+- 后台管理系统支持商品、FAQ、CDK、返现推广等管理
+
+4. 备注
+- 详细上线部署请见《上线部署文档》
+- 如有问题请联系开发负责人 

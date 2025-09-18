@@ -1,0 +1,4 @@
+const _id_Simple_vue_vue_type_style_index_0_scoped_a4ef45a7_lang = ".goods-detail-page[data-v-a4ef45a7]{min-height:100vh;padding:20px}.debug-info[data-v-a4ef45a7]{background:#f0f0f0;border-radius:8px;font-family:monospace;margin:20px;padding:20px}.debug-info h3[data-v-a4ef45a7]{color:#333;margin-top:0}.debug-info p[data-v-a4ef45a7]{margin:5px 0;white-space:pre-wrap;word-break:break-all}.goods-content[data-v-a4ef45a7]{background:#fff;border-radius:8px;box-shadow:0 2px 8px #0000001a;margin:20px;padding:20px}.error[data-v-a4ef45a7],.loading[data-v-a4ef45a7]{font-size:18px;padding:40px;text-align:center}.error[data-v-a4ef45a7]{color:red}button[data-v-a4ef45a7]{background:#235cdc;border:none;border-radius:4px;color:#fff;cursor:pointer;margin-top:10px;padding:10px 20px}button[data-v-a4ef45a7]:hover{background:#1d4ed8}";
+
+export { _id_Simple_vue_vue_type_style_index_0_scoped_a4ef45a7_lang as _ };
+//# sourceMappingURL=_id_-simple-styles-1.mjs-BHKog1WW.mjs.map

@@ -1,0 +1,123 @@
+
+> fantula-frontend@1.0.0 dev
+> nuxt dev
+
+[nuxi] Nuxt 3.17.5 with Nitro 2.11.13
+[get-port] Unable to find an available port (tried 3000 on host "localhost"). Using alternative port 3001.
+
+  ➜ Local:    http://localhost:3001/
+  ➜ Network:  use --host to expose
+
+  ➜ DevTools: press Shift + Option + D in the browser (v2.6.0)
+
+✔ Vite client built in 31ms
+✔ Vite server built in 813ms
+[nitro] ✔ Nuxt Nitro server built in 632ms
+ℹ Vite client warmed up in 2ms
+ℹ Vite server warmed up in 1118ms
+ℹ page reload api/order.ts
+ℹ hmr update /pages/profile/orders.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ page reload api/order.ts
+ℹ page reload api/order.ts (x2)
+ℹ hmr update /pages/profile/orders.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x2)
+ℹ hmr update /pages/index.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /components/LoginRegisterModal.vue
+ℹ hmr update /components/LoginRegisterModal.vue?vue&type=style&index=0&scoped=344b05a5&lang.css
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x2)
+ℹ hmr update /components/LoginRegisterModal.vue
+ℹ hmr update /components/LoginRegisterModal.vue (x2)
+ℹ hmr update /components/LoginRegisterModal.vue (x3)
+ℹ hmr update /components/LoginRegisterModal.vue (x4)
+ℹ hmr update /components/LoginRegisterModal.vue (x5)
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ page reload api/common.ts
+ℹ hmr update /pages/cart.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /pages/cart.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x2)
+ℹ hmr update /pages/cart.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x3)
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x2)
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x3)
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x4)
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x5)
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x6)
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x7)
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x8)
+[nuxi] ℹ .nuxt/dist directory has been removed. Restarting Nuxt...
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:86:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:125:10)
+    at NuxtDevServer.load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:111:18)
+    at _applyPromised (node_modules/perfect-debounce/dist/index.mjs:54:19)
+    at applyFn (node_modules/perfect-debounce/dist/index.mjs:15:22)
+    at Timeout._onTimeout (node_modules/perfect-debounce/dist/index.mjs:38:58)
+    at listOnTimeout (node:internal/timers:588:17)
+
+  ➜ DevTools: press Shift + Option + D in the browser (v2.6.0)
+
+✔ Vite client built in 47ms
+✔ Vite server built in 813ms
+[nitro] ✔ Nuxt Nitro server built in 804ms
+ℹ Vite client warmed up in 7ms
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:92:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:231:10)
+    at async NuxtDevServer.load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:111:7)
+    at async _applyPromised (node_modules/perfect-debounce/dist/index.mjs:54:10)
+
+ℹ Vite server warmed up in 1615ms
+[nuxi] ℹ .nuxt/dist directory has been removed. Restarting Nuxt...
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:86:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:125:10)
+    at NuxtDevServer.load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:111:18)
+    at _applyPromised (node_modules/perfect-debounce/dist/index.mjs:54:19)
+    at applyFn (node_modules/perfect-debounce/dist/index.mjs:15:22)
+    at Timeout._onTimeout (node_modules/perfect-debounce/dist/index.mjs:38:58)
+    at listOnTimeout (node:internal/timers:588:17)
+
+  ➜ DevTools: press Shift + Option + D in the browser (v2.6.0)
+
+✔ Vite client built in 164ms
+✔ Vite server built in 4901ms
+[nuxt] ℹ Compiled plugins.server.mjs in 3062.79ms
+[nuxt] ℹ Compiled plugins.client.mjs in 3478.57ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 3525.54ms
+[nuxt] ℹ Compiled plugins.server.mjs in 1760.31ms
+[nuxt] ℹ Compiled plugins.client.mjs in 3252.9ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 16733.43ms
+[nuxt] ℹ Compiled plugins.server.mjs in 707.52ms
+[nuxt] ℹ Compiled plugins.client.mjs in 788.61ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 822.45ms
+[nitro] ✔ Nuxt Nitro server built in 23241ms
+ℹ Vite client warmed up in 28ms
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:92:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:231:10)
+    at async NuxtDevServer.load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:111:7)
+    at async _applyPromised (node_modules/perfect-debounce/dist/index.mjs:54:10)
+
+[nuxt] ℹ Compiled router.options.mjs in 501.72ms
+ℹ Vite server warmed up in 5964ms

@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  # MySQL 数据库
+  mysql:
+    image: mysql:8.0
+    container_name: jiujiu-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: JiuJiu2024Root
+      MYSQL_DATABASE: jiujiu_db
+      MYSQL_USER: jiujiu_user
+      MYSQL_PASSWORD: JiuJiu2024Db
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - jiujiu-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Redis 缓存
+  redis:
+    image: redis:7-alpine
+    container_name: jiujiu-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - jiujiu-network
+
+  # 后端API服务
+  backend:
+    build: 
+      context: ./backend-api
+      dockerfile: Dockerfile
+    container_name: jiujiu-backend
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      DB_HOST: mysql
+      DB_USER: jiujiu_user
+      DB_PASSWORD: JiuJiu2024Db
+      DB_NAME: jiujiu_db
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: jiujiu_jwt_secret_2024_production
+      # 暂时禁用邮件功能
+      EMAIL_ENABLED: "false"
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./backend-api/logs:/app/logs
+      - ./backend-api/public/uploads:/app/public/uploads
+    networks:
+      - jiujiu-network
+
+  # 前端服务
+  frontend:
+    build:
+      context: ./nuxt-frontend
+      dockerfile: Dockerfile
+    container_name: jiujiu-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NUXT_PUBLIC_API_BASE: http://backend:3001
+      NITRO_PORT: 3000
+      NITRO_HOST: 0.0.0.0
+    depends_on:
+      - backend
+    networks:
+      - jiujiu-network
+
+  # 管理后台
+  admin:
+    build:
+      context: ./jiujiu-admin-simple
+      dockerfile: Dockerfile
+    container_name: jiujiu-admin
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - jiujiu-network
+
+networks:
+  jiujiu-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:

@@ -1,0 +1,37 @@
+【前端自动化脚本使用说明】
+
+1. 赋予脚本执行权限（首次使用需操作）
+在终端（Terminal）进入 nuxt-frontend 目录，执行：
+
+chmod +x api-smoke-test.sh
+chmod +x deploy-frontend.sh
+
+2. 运行脚本
+在 nuxt-frontend 目录下，执行：
+
+./api-smoke-test.sh
+./deploy-frontend.sh
+
+3. 查看运行结果
+
+- api-smoke-test.sh
+  - 运行后，终端会直接输出每一步的测试结果。
+  - 如果所有接口都正常，会看到“全部API基础功能测试通过”。
+  - 如果有接口失败，会在某一步卡住或报错，终端会显示错误信息。
+
+- deploy-frontend.sh
+  - 运行后，终端会输出每一步的进度（拉代码、安装依赖、构建、重启服务）。
+  - 前端服务启动后，日志会写入 frontend.log 文件。
+  - 可用如下命令实时查看日志：
+    tail -f frontend.log
+  - 如果脚本执行过程中有报错，终端会直接显示错误信息。
+
+4. Windows 用户说明
+- 推荐使用 Git Bash、WSL 或 PowerShell 运行 bash 脚本。
+- 不能直接双击 .sh 文件运行，需在终端进入目录后手动执行。
+
+5. 常见问题
+- 如提示“权限不够”，请先执行 chmod +x 脚本名.sh。
+- 如脚本报错，仔细查看终端输出的错误信息，按提示修复。
+
+如有任何疑问或报错，把终端输出内容发给开发者协助排查。 

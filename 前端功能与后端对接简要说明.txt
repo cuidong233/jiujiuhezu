@@ -1,0 +1,66 @@
+【凡图拉前端功能与后端对接简要说明】
+
+1. 首页（index.vue）
+- 展示平台主视觉Banner、热门商品、关于我们等内容。
+- Banner为静态图片，商品区可对接后端API获取商品列表。
+
+2. 商品详情页（goods/[id].vue）
+- 展示商品详细信息、图片、价格、购买等。
+- 已对接后端API（/product/goods/{id}）动态获取商品数据。
+
+3. FAQ页面（faq.vue）
+- 展示常见问题，支持分类、搜索、展开。
+- 已对接后端API（/question/list）获取FAQ数据。
+
+4. 购物车（cart.vue）
+- 展示用户购物车商品，支持增删改查。
+- 已对接后端API（/cart/list、/cart/add、/cart/update、/cart/remove、/cart/clear）。
+
+5. 订单页（profile/orders.vue）
+- 展示用户订单列表、订单详情、操作订单。
+- 已对接后端API（/product/order/getOrder、/product/order/info/{orderNo}等）。
+
+6. 优惠券兑换中心（profile/exchange.vue）
+- 展示用户可用优惠券、兑换券。
+- 已对接后端API（/coupon/my/exchange、/coupon/redeem等）。
+
+7. 钱包页（profile/wallet.vue）
+- 展示余额、充值明细。
+- 已对接后端API（/money、/money/page、/money/recharge/config等）。
+
+8. 工单（profile/tickets.vue）
+- 展示用户提交的工单，支持新建、查看。
+- 已对接后端API（/work/list、/work/等）。
+
+9. 收藏夹（profile/favorites.vue）
+- 展示用户收藏的商品。
+- 已对接后端API（/favorite/getFavorites、/favorite/add、/favorite/remove等）。
+
+10. 结算页（checkout.vue）
+- 展示购物车结算、优惠券选择、支付。
+- 已对接后端API（/cart/list、/order/createOrder、/coupon/my/canUse等）。
+
+11. 登录/注册页（login.vue）
+- 支持邮箱/手机号登录注册。
+- 已对接后端API（/product/common/mail/login、/product/common/mail/code等）。
+
+12. 个人中心（profile/index.vue）
+- 展示用户信息、快捷入口。
+- 已对接后端API（/product/auth/getUserInfo等）。
+
+13. 文章详情页（article/[id].vue）、社区页（community.vue）
+- 目前为静态内容，未对接后端API。
+
+14. 其他页面
+- 关于我们、公司介绍等为静态页面。
+
+15. 返现推广页（profile/referral.vue）
+- 展示用户专属推广码、推广链接、推广收益、推广用户数、成功订单数、累计收益等。
+- 已对接后端API（/invite/statistics、/invite/inviter），所有数据均为动态获取。
+
+【总结】
+- 前端已实现电商平台核心功能，绝大部分页面与后端API完成对接，数据动态获取。
+- 仅部分内容页（如文章、社区、关于我们）为静态数据，后续可按需对接API。 
+
+【更新说明】
+- 个人中心返现推广页面已完成API对接和数据动态化，页面展示内容与后端数据实时同步。 

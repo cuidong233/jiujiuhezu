@@ -1,0 +1,204 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  // 兼容性日期
+  compatibilityDate: '2025-07-01',
+  
+  // 开发工具
+  devtools: { enabled: true },
+  
+  // 模块
+  modules: [
+    '@pinia/nuxt',
+    '@nuxt/image',
+  ],
+
+  // 组件自动导入
+  components: true,
+  
+  // 应用配置
+  app: {
+    head: {
+      title: '凡图拉 - 优质商品平台',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: '凡图拉 - 提供优质商品和服务的综合性平台，专注于流媒体服务和数字产品' },
+        { name: 'keywords', content: '凡图拉,流媒体,数字产品,Netflix,Disney+,Apple TV,技术支持,社区帮助' },
+        { name: 'author', content: '凡图拉团队' },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'googlebot', content: 'index, follow' },
+        { name: 'language', content: 'zh-CN' },
+        { name: 'revisit-after', content: '7 days' },
+        // Open Graph
+        { property: 'og:title', content: '凡图拉 - 优质商品平台' },
+        { property: 'og:description', content: '凡图拉 - 提供优质商品和服务的综合性平台，专注于流媒体服务和数字产品' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: '凡图拉' },
+        { property: 'og:locale', content: 'zh_CN' },
+        { property: 'og:image', content: '/images/og-image.jpg' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:url', content: 'https://yourdomain.com' },
+        // Twitter Card
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: '凡图拉 - 优质商品平台' },
+        { name: 'twitter:description', content: '凡图拉 - 提供优质商品和服务的综合性平台，专注于流媒体服务和数字产品' },
+        { name: 'twitter:image', content: '/images/og-image.jpg' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'canonical', href: 'https://yourdomain.com' },
+        { rel: 'alternate', hreflang: 'zh-CN', href: 'https://yourdomain.com' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'dns-prefetch', href: 'https://api.yourdomain.com' }
+      ]
+    }
+  },
+  
+
+  
+  // 运行时配置
+  runtimeConfig: {
+    // 私有配置（仅在服务端可用）
+    apiSecret: process.env.API_SECRET,
+    
+    // 公共配置（客户端和服务端都可用）
+    public: {
+      apiBase: process.env.NODE_ENV === 'development' ? 'http://localhost:3002' : 'https://fantula.com',
+      appName: '凡图拉',
+      siteUrl: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://fantula.com'
+    }
+  },
+  
+  // Vite 配置 - 使用 Vite 代理
+  vite: {
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3002',
+          changeOrigin: true,
+          rewrite: (path) => path,
+          timeout: 30000, // 30秒超时
+          configure: (proxy, options) => {
+            // 添加错误处理
+            proxy.on('error', (err, req, res) => {
+              console.log('代理错误:', err)
+            })
+            proxy.on('proxyReq', (proxyReq, req, res) => {
+              console.log('发送请求到目标服务器:', req.url)
+            })
+          }
+        },
+        // 添加uploads路径代理
+        '/uploads': {
+          target: 'http://localhost:3002',
+          changeOrigin: true,
+          rewrite: (path) => path
+        }
+      }
+    }
+  },
+  
+  // Nitro 配置
+  nitro: {
+    // 预渲染配置
+    prerender: {
+      crawlLinks: true,
+      routes: ['/community', '/about-us', '/service', '/faq']
+    }
+  },
+  
+  // 构建配置
+  build: {
+    transpile: ['axios', 'element-plus/es']
+  },
+  
+  // 类型检查
+  typescript: {
+    strict: false,
+    typeCheck: false
+  },
+
+  // 路由配置
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
+  },
+
+  // SSR配置 - 启用服务端渲染
+  ssr: true,
+  
+  // 确保 Nitro 处理服务器端 API 路由
+  serverHandlers: [],
+  
+  // 确保客户端导航正常工作
+  experimental: {
+    payloadExtraction: false
+  },
+
+  // SEO 优化配置
+  css: [],
+
+  // 图片优化配置
+  image: {
+    // 图片质量设置
+    quality: 80,
+    // 支持的格式（按优先级）
+    format: ['webp', 'avif', 'jpeg'],
+    // 响应式断点
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+    // 允许的外部域名
+    domains: ['fantula.com', 'via.placeholder.com'],
+    // 别名配置
+    alias: {
+      fantula: 'https://fantula.com',
+    },
+    // 预设配置
+    presets: {
+      // 商品主图预设
+      productMain: {
+        modifiers: {
+          format: 'webp',
+          quality: 90,
+          width: 600,
+          height: 600,
+        },
+      },
+      // 商品缩略图预设
+      productThumb: {
+        modifiers: {
+          format: 'webp',
+          quality: 75,
+          width: 100,
+          height: 100,
+        },
+      },
+      // 用户头像预设
+      avatar: {
+        modifiers: {
+          format: 'webp',
+          quality: 80,
+          width: 64,
+          height: 64,
+        },
+      },
+      // 图标预设
+      icon: {
+        modifiers: {
+          format: 'webp',
+          quality: 85,
+          width: 48,
+          height: 48,
+        },
+      },
+    },
+  },
+}) 

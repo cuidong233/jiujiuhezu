@@ -1,0 +1,29 @@
+【凡图拉项目数据库初始化操作说明】
+
+1. 选择SQL脚本
+- 推荐使用 renren-admin/db/mysql.sql（内容最全，包含所有系统表和业务表）。
+- 也可用 renren-api/db/mysql.sql（仅部分表，建议用admin目录下的完整版）。
+
+2. 新建数据库
+- 用Navicat、DBeaver、命令行等工具，新建一个空的MySQL数据库（如 renren）。
+
+  示例SQL：
+  CREATE DATABASE renren DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+  USE renren;
+
+3. 执行SQL脚本
+- 打开 renren-admin/db/mysql.sql 文件。
+- 全选内容，粘贴到数据库客户端的SQL窗口，点击“运行”或“执行”。
+- 或者用命令行导入：
+  mysql -u your_user -p your_db < /path/to/renren-admin/db/mysql.sql
+
+4. 检查表结构
+- 执行完毕后，刷新数据库，应该能看到几十张表（如 sys_user、goods、order、coupon、question、work、banner 等）。
+
+5. 配置 application.yml
+- 确保 application.yml 或 application-dev.yml 里的数据库名、账号、密码与你刚才创建的数据库一致。
+
+【注意事项】
+- 如遇SQL执行报错，请检查MySQL版本、字符集、权限等。
+- 如需Oracle、PostgreSQL、SQLServer等脚本，可用对应目录下的sql文件。
+- 有问题请联系开发者或运维。 

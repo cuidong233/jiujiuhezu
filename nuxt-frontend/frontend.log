@@ -1,0 +1,207 @@
+
+> fantula-frontend@1.0.0 dev
+> nuxt dev
+
+[nuxi] Nuxt 3.17.5 with Nitro 2.11.13
+[get-port] Unable to find an available port (tried 3000 on host "localhost"). Using alternative port 3002.
+
+  ➜ Local:    http://localhost:3002/
+  ➜ Network:  use --host to expose
+
+  ➜ DevTools: press Shift + Option + D in the browser (v2.6.0)
+
+✔ Vite client built in 19ms
+✔ Vite server built in 410ms
+[nuxt] ℹ Compiled runtime.vue-devtools-client.AmAA_KiBbMdYYrz6jFl0UEjCX_IbtkSiqw2SlS0rRlA.js in 1170.56ms
+[nuxt] ℹ Compiled router.options.mjs in 1204.64ms
+[nitro] ✔ Nuxt Nitro server built in 376ms
+ℹ Vite client warmed up in 2ms
+ℹ Vite server warmed up in 795ms
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+
+ ERROR  http proxy error: /api/product/10
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/10
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17) (x2)
+
+
+ ERROR  http proxy error: /api/product/goods/10/skus
+AggregateError [EMFILE]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at internalConnectMultiple (node:net:1210:5)
+    at internalConnectMultiple (node:net:1210:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:464:18)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1552:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/good/sku/page
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/goods/10/skus
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/good/sku/page
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+ℹ hmr update /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+
+ ERROR  http proxy error: /api/product/10
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/goods/10/skus
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/10
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/good/sku/page
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  [unhandledRejection] read ECONNRESET
+
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+
+
+ ERROR  http proxy error: /api/product/goods/1/skus
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  [unhandledRejection] read ECONNRESET
+
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+
+
+ ERROR  http proxy error: /api/product/good/sku/page
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/banner?_t=1757593800903
+AggregateError [EMFILE]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at internalConnectMultiple (node:net:1210:5)
+    at internalConnectMultiple (node:net:1210:5)
+    at defaultTriggerAsyncIdScope (node:internal/async_hooks:464:18)
+    at GetAddrInfoReqWrap.emitLookup [as callback] (node:net:1552:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  [unhandledRejection] read ECONNRESET
+
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+
+
+ ERROR  http proxy error: /api/order/user/1?page=1&limit=50&_t=1757593801105
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/cart/list?_t=1757593801105
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  [unhandledRejection] read ECONNRESET
+
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+
+
+ ERROR  [unhandledRejection] read ECONNRESET
+
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+
+
+ ERROR  http proxy error: /api/order/user/1?page=1&limit=50&_t=1757594108927
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/good/sku/folder/list?userId=1&_t=1757594108927
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  [unhandledRejection] socket hang up
+
+    at Socket.socketOnEnd (node:_http_client:542:25)
+    at Socket.emit (node:events:530:35)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+
+
+ ERROR  http proxy error: /api/product/good/sku/folder/list?userId=1&_t=1757594118239
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  [unhandledRejection] read ECONNRESET
+
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+
+
+ ERROR  http proxy error: /api/cart/list?_t=1757594118239
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/banner?_t=1757594132936
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/product/good/sku/folder/list?userId=1&_t=1757594133135
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/order/user/1?page=1&limit=50&_t=1757594133135
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+
+
+ ERROR  http proxy error: /api/cart/list?_t=1757594133135
+Error: getaddrinfo ENOTFOUND localhost
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+

@@ -1,0 +1,19 @@
+
+> fantula-frontend@1.0.0 dev
+> nuxt dev
+
+[nuxi] Nuxt 3.17.5 with Nitro 2.11.13
+[get-port] Unable to find an available port (tried 3000 on host "localhost"). Using alternative port 3001.
+
+  ➜ Local:    http://localhost:3001/
+  ➜ Network:  use --host to expose
+
+  ➜ DevTools: press Shift + Option + D in the browser (v2.6.0)
+
+✔ Vite client built in 27ms
+✔ Vite server built in 1440ms
+[nuxt] ℹ Compiled runtime.vue-devtools-client.AmAA_KiBbMdYYrz6jFl0UEjCX_IbtkSiqw2SlS0rRlA.js in 2945.36ms
+[nuxt] ℹ Compiled router.options.mjs in 3213.11ms
+[nitro] ✔ Nuxt Nitro server built in 580ms
+ℹ Vite client warmed up in 7ms
+ℹ Vite server warmed up in 1205ms

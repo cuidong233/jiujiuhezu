@@ -1,0 +1,72 @@
+version: '3.8'
+
+# 开发环境 Docker Compose 配置
+services:
+  # MySQL 数据库
+  mysql:
+    image: mysql:8.0
+    container_name: jiujiu-mysql-dev
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: dev_root_password
+      MYSQL_DATABASE: jiujiu_dev
+      MYSQL_USER: dev_user
+      MYSQL_PASSWORD: dev_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_dev_data:/var/lib/mysql
+      - ./backend-api/src/db:/docker-entrypoint-initdb.d
+    networks:
+      - jiujiu-dev-network
+
+  # Redis 缓存
+  redis:
+    image: redis:7-alpine
+    container_name: jiujiu-redis-dev
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_dev_data:/data
+    networks:
+      - jiujiu-dev-network
+
+  # 后端API服务（开发模式）
+  backend:
+    build: 
+      context: ./backend-api
+      dockerfile: Dockerfile.dev
+    container_name: jiujiu-backend-dev
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+      DB_HOST: mysql
+      DB_USER: dev_user
+      DB_PASSWORD: dev_password
+      DB_NAME: jiujiu_dev
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: dev_jwt_secret_key_123456
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./backend-api:/app
+      - /app/node_modules
+      - ./backend-api/logs:/app/logs
+      - ./backend-api/public/uploads:/app/public/uploads
+    networks:
+      - jiujiu-dev-network
+    command: npm run dev
+
+networks:
+  jiujiu-dev-network:
+    driver: bridge
+
+volumes:
+  mysql_dev_data:
+  redis_dev_data:

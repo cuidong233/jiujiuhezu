@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "http-proxy-middleware": "^3.0.5",
+    "mysql2": "^3.14.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}

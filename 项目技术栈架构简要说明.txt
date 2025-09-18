@@ -1,0 +1,32 @@
+【项目技术栈架构简要说明】
+
+1. 前端技术栈
+- 框架：Nuxt.js（基于Vue，支持服务端渲染，利于SEO）
+- 语言：JavaScript/TypeScript
+- 包管理：npm
+- 主要功能：页面动态数据渲染、与后端API对接、响应式布局、SEO优化
+
+2. 后端技术栈
+- 框架：Spring Boot（Java）
+- 语言：Java
+- 构建工具：Maven
+- 数据库：MySQL/Oracle/达梦（可选）
+- 主要功能：RESTful API接口、电商业务逻辑、用户与订单管理、后台管理
+
+3. 其他
+- 前后端分离架构，接口通过HTTP/HTTPS通信
+- 支持多环境部署，配置灵活
+- 具备良好的可维护性和扩展性 
+
+4. 启动说明
+- 前端启动：
+  1）进入 nuxt-frontend 目录
+  2）执行 npm install 安装依赖
+  3）开发模式：npm run dev
+  4）生产模式：npm run build && npm run start
+
+- 后端启动：
+  1）进入 renren-admin、renren-api、jiujiu-product 等后端模块目录
+  2）执行 mvn clean package 打包
+  3）执行 java -jar target/*.jar 启动服务
+  4）确保数据库已初始化并配置正确 

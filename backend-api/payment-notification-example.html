@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付通知实时监控</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .stat-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .payment-list {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .payment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            animation: slideIn 0.5s ease;
+        }
+        
+        .payment-item:last-child {
+            border-bottom: none;
+        }
+        
+        .payment-item.new {
+            background: #f0f9ff;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .payment-info {
+            flex: 1;
+        }
+        
+        .order-no {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .payment-time {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .payment-amount {
+            font-size: 20px;
+            font-weight: bold;
+            color: #52c41a;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 12px;
+        }
+        
+        .status-success {
+            background: #f6ffed;
+            color: #52c41a;
+        }
+        
+        .status-pending {
+            background: #fff7e6;
+            color: #faad14;
+        }
+        
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1000;
+        }
+        
+        .status-connected {
+            background: #52c41a;
+            color: white;
+        }
+        
+        .status-disconnected {
+            background: #ff4d4f;
+            color: white;
+        }
+        
+        .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            background: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 支付实时监控中心</h1>
+        
+        <div class="connection-status" id="connectionStatus">
+            <span class="pulse"></span>
+            <span>连接中...</span>
+        </div>
+        
+        <div class="dashboard">
+            <div class="card">
+                <div class="card-title">今日支付笔数</div>
+                <div class="stat-value" id="todayCount">0</div>
+                <div class="stat-label">笔交易</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">今日支付金额</div>
+                <div class="stat-value">¥<span id="todayAmount">0</span></div>
+                <div class="stat-label">总金额</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">待支付订单</div>
+                <div class="stat-value" id="pendingCount">0</div>
+                <div class="stat-label">等待支付</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-title">平均支付金额</div>
+                <div class="stat-value">¥<span id="avgAmount">0</span></div>
+                <div class="stat-label">平均值</div>
+            </div>
+        </div>
+        
+        <div class="payment-list">
+            <div class="tabs">
+                <button class="tab active" data-tab="recent">最近支付</button>
+                <button class="tab" data-tab="pending">待支付订单</button>
+            </div>
+            
+            <div id="paymentContainer">
+                <div class="empty-state">暂无支付记录</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = 'http://localhost:3002/api';
+        let eventSource = null;
+        let currentTab = 'recent';
+        
+        // 初始化
+        async function init() {
+            connectSSE();
+            loadStatistics();
+            loadPayments();
+            
+            // 每30秒刷新一次数据
+            setInterval(() => {
+                loadStatistics();
+                loadPayments();
+            }, 30000);
+            
+            // Tab切换
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentTab = e.target.dataset.tab;
+                    loadPayments();
+                });
+            });
+        }
+        
+        // 连接SSE实时推送
+        function connectSSE() {
+            eventSource = new EventSource(`${API_BASE}/payment/status/stream`);
+            
+            eventSource.onopen = () => {
+                updateConnectionStatus(true);
+            };
+            
+            eventSource.onerror = () => {
+                updateConnectionStatus(false);
+                // 5秒后重连
+                setTimeout(connectSSE, 5000);
+            };
+            
+            eventSource.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    handleRealtimeEvent(data);
+                } catch (error) {
+                    console.error('解析SSE数据失败:', error);
+                }
+            };
+        }
+        
+        // 处理实时事件
+        function handleRealtimeEvent(data) {
+            console.log('收到实时事件:', data);
+            
+            switch(data.type) {
+                case 'connected':
+                    console.log('✅ SSE连接成功');
+                    break;
+                    
+                case 'paymentSuccess':
+                    showPaymentNotification(data);
+                    loadStatistics();
+                    if (currentTab === 'recent') {
+                        loadPayments();
+                    }
+                    break;
+                    
+                case 'orderCreated':
+                    if (currentTab === 'pending') {
+                        loadPayments();
+                    }
+                    loadStatistics();
+                    break;
+                    
+                case 'orderExpired':
+                    if (currentTab === 'pending') {
+                        loadPayments();
+                    }
+                    break;
+            }
+        }
+        
+        // 显示支付成功通知
+        function showPaymentNotification(data) {
+            // 创建浏览器通知
+            if (Notification.permission === 'granted') {
+                new Notification('💰 收到新支付！', {
+                    body: `订单 ${data.orderNo} 支付成功，金额：¥${data.data.amount}`,
+                    icon: '/favicon.ico'
+                });
+            }
+            
+            // 播放提示音（可选）
+            playNotificationSound();
+        }
+        
+        // 播放提示音
+        function playNotificationSound() {
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZijYIG2m98OWXSQ0PUqzn77FYHAg+ltryxHQlBS+Bzg==');
+            audio.play().catch(() => {});
+        }
+        
+        // 更新连接状态
+        function updateConnectionStatus(connected) {
+            const statusEl = document.getElementById('connectionStatus');
+            if (connected) {
+                statusEl.className = 'connection-status status-connected';
+                statusEl.innerHTML = '<span class="pulse"></span><span>已连接</span>';
+            } else {
+                statusEl.className = 'connection-status status-disconnected';
+                statusEl.innerHTML = '<span class="pulse"></span><span>已断开</span>';
+            }
+        }
+        
+        // 加载统计数据
+        async function loadStatistics() {
+            try {
+                const response = await fetch(`${API_BASE}/payment/status/statistics`);
+                const result = await response.json();
+                
+                if (result.code === 0) {
+                    const stats = result.data;
+                    document.getElementById('todayCount').textContent = stats.todayPayments;
+                    document.getElementById('todayAmount').textContent = stats.totalAmount;
+                    document.getElementById('pendingCount').textContent = stats.pendingPayments;
+                    document.getElementById('avgAmount').textContent = stats.avgAmount;
+                }
+            } catch (error) {
+                console.error('加载统计数据失败:', error);
+            }
+        }
+        
+        // 加载支付列表
+        async function loadPayments() {
+            try {
+                const endpoint = currentTab === 'recent' 
+                    ? '/payment/status/recent-payments' 
+                    : '/payment/status/pending-payments';
+                    
+                const response = await fetch(`${API_BASE}${endpoint}`);
+                const result = await response.json();
+                
+                if (result.code === 0) {
+                    displayPayments(result.data);
+                }
+            } catch (error) {
+                console.error('加载支付列表失败:', error);
+            }
+        }
+        
+        // 显示支付列表
+        function displayPayments(payments) {
+            const container = document.getElementById('paymentContainer');
+            
+            if (!payments || payments.length === 0) {
+                container.innerHTML = '<div class="empty-state">暂无数据</div>';
+                return;
+            }
+            
+            container.innerHTML = payments.map(payment => `
+                <div class="payment-item ${payment.isNew ? 'new' : ''}">
+                    <div class="payment-info">
+                        <div class="order-no">
+                            订单号：${payment.orderNo}
+                            <span class="status-badge ${payment.status === 'SUCCESS' ? 'status-success' : 'status-pending'}">
+                                ${payment.status === 'SUCCESS' ? '已支付' : '待支付'}
+                            </span>
+                        </div>
+                        <div class="payment-time">
+                            ${formatTime(payment.paidAt || payment.createdAt)}
+                            ${payment.waitingTime ? `(等待 ${formatWaitingTime(payment.waitingTime)})` : ''}
+                        </div>
+                    </div>
+                    <div class="payment-amount">
+                        ¥${payment.amount || 0}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // 格式化时间
+        function formatTime(timeStr) {
+            if (!timeStr) return '-';
+            const date = new Date(timeStr);
+            const now = new Date();
+            const diff = now - date;
+            
+            if (diff < 60000) {
+                return '刚刚';
+            } else if (diff < 3600000) {
+                return `${Math.floor(diff / 60000)}分钟前`;
+            } else if (diff < 86400000) {
+                return `${Math.floor(diff / 3600000)}小时前`;
+            } else {
+                return date.toLocaleString('zh-CN');
+            }
+        }
+        
+        // 格式化等待时间
+        function formatWaitingTime(seconds) {
+            if (seconds < 60) {
+                return `${seconds}秒`;
+            } else if (seconds < 3600) {
+                return `${Math.floor(seconds / 60)}分钟`;
+            } else {
+                return `${Math.floor(seconds / 3600)}小时`;
+            }
+        }
+        
+        // 请求通知权限
+        if (Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+        
+        // 启动
+        init();
+    </script>
+</body>
+</html>

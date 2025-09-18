@@ -1,0 +1,1 @@
+import{f as e,G as t,g as a,M as s,c as n,o as c,_ as r}from"./EcDhdyxl.js";import{u as _}from"./Bc9UkeLm.js";const i=e({__name:"login",setup(p){_({title:"用户登录 - 凡图拉"});const o=t();return a(()=>{s("/"),setTimeout(()=>{o.openLogin()},100)}),(d,m)=>(c(),n("div"))}}),f=r(i,[["__scopeId","data-v-cd652850"]]);export{f as default};

@@ -1,0 +1,1 @@
+import{f as e,c as t,o as a,_ as c}from"./EcDhdyxl.js";const o={class:"page-placeholder"},s=e({__name:"contact",setup(_){return(n,p)=>(a(),t("div",o,"联系我们页面建设中…"))}}),f=c(s,[["__scopeId","data-v-f8aa0efe"]]);export{f as default};

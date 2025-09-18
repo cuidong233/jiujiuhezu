@@ -1,0 +1,1 @@
+import{u as e}from"./Bc9UkeLm.js";import{f as t,c as o,o as n}from"./EcDhdyxl.js";const i=t({__name:"service",setup(a){return e({title:"客服中心 - 凡图拉",meta:[{name:"description",content:"凡图拉客服中心，7×24小时全天候服务，为您提供专业的技术支持和问题解答。"}]}),(r,c)=>(n(),o("div"))}});export{i as default};

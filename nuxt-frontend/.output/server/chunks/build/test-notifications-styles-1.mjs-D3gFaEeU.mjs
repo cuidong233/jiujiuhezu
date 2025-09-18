@@ -1,0 +1,4 @@
+const testNotifications_vue_vue_type_style_index_0_scoped_44d960cf_lang = ".test-notifications-page[data-v-44d960cf]{margin:0 auto;max-width:1200px;padding:20px}.debug-info[data-v-44d960cf],.manual-test[data-v-44d960cf],.notification-section[data-v-44d960cf],.notifications-list[data-v-44d960cf],.user-info[data-v-44d960cf]{border:1px solid #eee;border-radius:8px;margin-bottom:30px;padding:20px}.notification-item[data-v-44d960cf]{margin-bottom:15px}.debug-info pre[data-v-44d960cf]{background:#f5f5f5;border-radius:4px;font-size:12px;overflow-x:auto;padding:10px}h1[data-v-44d960cf]{color:#333;margin-bottom:30px}h2[data-v-44d960cf]{color:#666;font-size:18px;margin-bottom:15px}h3[data-v-44d960cf]{color:#999;font-size:16px;margin-bottom:10px}";
+
+export { testNotifications_vue_vue_type_style_index_0_scoped_44d960cf_lang as t };
+//# sourceMappingURL=test-notifications-styles-1.mjs-D3gFaEeU.mjs.map

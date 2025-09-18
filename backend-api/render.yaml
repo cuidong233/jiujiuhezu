@@ -1,0 +1,48 @@
+# Render 部署配置 - 使用 Aiven MySQL
+services:
+  - type: web
+    name: jiujiu-backend
+    env: node
+    region: oregon # 美西区域
+    plan: free # 免费套餐
+    buildCommand: "cd backend-api && npm install"
+    startCommand: "cd backend-api && npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: JWT_SECRET
+        generateValue: true # 自动生成安全密钥
+      
+      # Aiven MySQL 数据库配置
+      - key: DB_HOST
+        value: mysql-33d17299-cuidong111-28e9.e.aivencloud.com
+      - key: DB_PORT
+        value: 16966
+      - key: DB_NAME
+        value: defaultdb
+      - key: DB_USER
+        value: avnadmin
+      - key: DB_PASSWORD
+        value: AVNS_SIHyKQvzVeOMLY2Y4R1
+      
+      # 兼容旧配置
+      - key: MYSQL_DATABASE
+        value: defaultdb
+      - key: MYSQL_USER
+        value: avnadmin
+      - key: MYSQL_PASSWORD
+        value: AVNS_SIHyKQvzVeOMLY2Y4R1
+      
+      # CORS 配置 (部署后更新)
+      - key: CORS_ORIGIN
+        value: "*"
+      
+      # API URLs (部署后更新)
+      - key: API_BASE_URL
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: ADMIN_URL
+        sync: false

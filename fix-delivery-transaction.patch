@@ -1,0 +1,193 @@
+# 修复手动发货事务问题
+
+## 问题描述
+手动发货后：
+- 前台显示已发货（前端乐观更新）
+- 后台仍是待处理状态（数据库未更新）
+- 没有收到邮件（因为订单状态没更新）
+
+## 问题原因
+1. Sequelize 的 `order.update()` 在事务中可能没有正确执行
+2. 事务提交后，返回的是旧的 order 对象
+
+## 修复方案
+
+### 修改 /backend-api/src/routes/order.routes.js
+
+替换第 559-567 行的更新代码：
+
+```javascript
+// ===== 原代码（有问题）=====
+// 更新订单状态
+await order.update({
+  deliveryStatus: 2, // 已发货
+  deliveryMode: 'manual',
+  deliveredAt: new Date(),
+  orderStatus: 2, // 已完成
+  completedAt: new Date(),
+  remark: remark || fullDeliveryContent
+}, { transaction });
+
+// ===== 修复后的代码 =====
+// 更新订单状态（使用静态方法确保更新）
+const updateResult = await Order.update({
+  deliveryStatus: 2, // 已发货
+  deliveryMode: 'manual',
+  deliveredAt: new Date(),
+  orderStatus: 2, // 已完成
+  completedAt: new Date(),
+  remark: remark || fullDeliveryContent,
+  updatedAt: new Date() // 确保更新时间也更新
+}, {
+  where: { orderNo: orderNo },
+  transaction
+});
+
+console.log(`📝 更新订单 ${orderNo} 结果: 影响行数 = ${updateResult[0]}`);
+
+if (updateResult[0] === 0) {
+  throw new Error('订单状态更新失败，未找到订单或更新失败');
+}
+
+// 更新本地对象的值（用于返回给前端）
+order.deliveryStatus = 2;
+order.orderStatus = 2;
+order.deliveredAt = new Date();
+order.completedAt = new Date();
+```
+
+### 在事务提交后添加验证（第 587 行后）
+
+```javascript
+await transaction.commit();
+console.log(`✅ 事务提交成功: ${orderNo}`);
+
+// 验证更新是否真的成功
+const verifyOrder = await Order.findOne({
+  where: { orderNo: orderNo }
+});
+
+if (!verifyOrder) {
+  console.error(`❌ 验证失败：找不到订单 ${orderNo}`);
+  throw new Error('订单更新验证失败');
+}
+
+if (verifyOrder.deliveryStatus !== 2 || verifyOrder.orderStatus !== 2) {
+  console.error(`❌ 订单 ${orderNo} 状态验证失败！`);
+  console.error(`   发货状态: ${verifyOrder.deliveryStatus} (期望: 2)`);
+  console.error(`   订单状态: ${verifyOrder.orderStatus} (期望: 2)`);
+  throw new Error('订单状态更新失败，请重试');
+}
+
+console.log(`✅ 订单 ${orderNo} 状态验证成功`);
+console.log(`   发货状态: ${verifyOrder.deliveryStatus}`);
+console.log(`   订单状态: ${verifyOrder.orderStatus}`);
+console.log(`   用户邮箱: ${verifyOrder.userEmail || '未设置'}`);
+
+// 使用验证后的订单数据发送邮件
+const finalOrder = verifyOrder;
+```
+
+### 修改邮件发送部分（第 590 行）
+
+```javascript
+// 发送邮件通知（使用验证后的订单数据）
+if (finalOrder.userEmail) {
+  console.log(`📧 准备发送邮件到: ${finalOrder.userEmail}`);
+  
+  // 异步发送邮件
+  setTimeout(async () => {
+    try {
+      const product = await Product.findByPk(finalOrder.productId);
+      
+      const emailData = {
+        userEmail: finalOrder.userEmail,
+        orderNo: finalOrder.orderNo,
+        productName: product ? (product.title || product.name) : '商品',
+        productInfo: additionalInfo || product?.description || '',
+        amount: finalOrder.totalAmount || finalOrder.amount,
+        cdkKeys: cdkCodes
+      };
+      
+      console.log(`📧 发送邮件数据:`, emailData);
+      
+      const brevoService = require('../services/brevoService.js').default;
+      const result = await brevoService.sendManualDeliveryCompleteEmail(emailData);
+      
+      if (result.success) {
+        console.log(`✅ 邮件发送成功: ${finalOrder.userEmail}`);
+      } else {
+        console.error(`❌ 邮件发送失败: ${result.message}`);
+      }
+    } catch (emailError) {
+      console.error('❌ 发送邮件异常:', emailError);
+    }
+  }, 500);
+} else {
+  console.log(`⚠️ 订单 ${finalOrder.orderNo} 没有用户邮箱`);
+  
+  // 尝试从用户表获取
+  try {
+    const User = require('../models/User.js').default;
+    const user = await User.findByPk(finalOrder.userId);
+    if (user && user.email) {
+      console.log(`📧 从用户表获取邮箱: ${user.email}`);
+      // 更新订单邮箱
+      await Order.update(
+        { userEmail: user.email },
+        { where: { id: finalOrder.id } }
+      );
+      finalOrder.userEmail = user.email;
+      // 递归调用邮件发送逻辑...
+    }
+  } catch (error) {
+    console.error('获取用户邮箱失败:', error);
+  }
+}
+```
+
+### 修改返回数据（第 620 行）
+
+```javascript
+res.json({
+  code: 200,
+  message: '发货成功',
+  data: {
+    order: {
+      orderNo: finalOrder.orderNo,
+      deliveryStatus: finalOrder.deliveryStatus,
+      orderStatus: finalOrder.orderStatus,
+      deliveredAt: finalOrder.deliveredAt,
+      userEmail: finalOrder.userEmail
+    },
+    cdkCount: cdkCodes.length,
+    updateVerified: true // 标记已验证
+  }
+});
+```
+
+## 完整的修复流程
+
+1. 使用 `Order.update()` 静态方法而不是实例方法
+2. 检查更新影响的行数
+3. 事务提交后重新查询验证
+4. 使用验证后的数据发送邮件
+5. 返回验证后的状态给前端
+
+## 测试步骤
+
+1. 应用修复
+2. 重启后端服务
+3. 执行手动发货
+4. 查看控制台日志
+5. 验证数据库状态
+
+## 监控命令
+
+```bash
+# 监控日志
+tail -f backend-api/server.log | grep -E "更新订单|验证|发货|邮件"
+
+# 检查数据库
+mysql -u root -p jiujiu -e "SELECT order_no, delivery_status, order_status, user_email FROM pr_orders WHERE order_no = 'YOUR_ORDER_NO'"
+```

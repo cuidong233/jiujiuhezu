@@ -1,0 +1,124 @@
+version: '3.8'
+
+services:
+  # MySQL 数据库
+  mysql:
+    image: mysql:8.0
+    container_name: jiujiu-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend-api/src/db:/docker-entrypoint-initdb.d
+    networks:
+      - jiujiu-network
+
+  # Redis 缓存
+  redis:
+    image: redis:7-alpine
+    container_name: jiujiu-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - jiujiu-network
+
+  # 后端API服务
+  backend:
+    build: ./backend-api
+    container_name: jiujiu-backend
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      DB_HOST: mysql
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: ${JWT_SECRET}
+      EMAIL_HOST: ${EMAIL_HOST}
+      EMAIL_PORT: ${EMAIL_PORT}
+      EMAIL_USER: ${EMAIL_USER}
+      EMAIL_PASS: ${EMAIL_PASS}
+      ALIPAY_APP_ID: ${ALIPAY_APP_ID}
+      ALIPAY_PRIVATE_KEY: ${ALIPAY_PRIVATE_KEY}
+      ALIPAY_PUBLIC_KEY: ${ALIPAY_PUBLIC_KEY}
+      WECHAT_APP_ID: ${WECHAT_APP_ID}
+      WECHAT_MCH_ID: ${WECHAT_MCH_ID}
+      WECHAT_API_KEY: ${WECHAT_API_KEY}
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./backend-api/logs:/app/logs
+      - ./backend-api/public/uploads:/app/public/uploads
+    networks:
+      - jiujiu-network
+
+  # 前端服务
+  frontend:
+    build: ./nuxt-frontend
+    container_name: jiujiu-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NUXT_PUBLIC_API_BASE: http://backend:3001/api
+      NITRO_PORT: 3000
+      NITRO_HOST: 0.0.0.0
+    depends_on:
+      - backend
+    networks:
+      - jiujiu-network
+
+  # 管理后台
+  admin:
+    build: ./jiujiu-admin-simple
+    container_name: jiujiu-admin
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - jiujiu-network
+
+  # Nginx 反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: jiujiu-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./nginx/logs:/var/log/nginx
+    depends_on:
+      - frontend
+      - backend
+      - admin
+    networks:
+      - jiujiu-network
+
+networks:
+  jiujiu-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:

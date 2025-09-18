@@ -1,0 +1,188 @@
+
+> fantula-frontend@1.0.0 dev
+> nuxt dev
+
+[nuxi] Nuxt 3.17.5 with Nitro 2.11.13
+
+  ➜ Local:    http://localhost:3000/
+  ➜ Network:  use --host to expose
+
+  ➜ DevTools: press Shift + Option + D in the browser (v2.6.0)
+
+✔ Vite client built in 17ms
+✔ Vite server built in 358ms
+[nitro] ✔ Nuxt Nitro server built in 351ms
+ℹ Vite client warmed up in 1ms
+ℹ Vite server warmed up in 723ms
+
+ WARN  [Vue Router warn]: No match found for location with path "/.well-known/appspecific/com.chrome.devtools.json"
+
+
+ WARN  [Vue Router warn]: No match found for location with path "/.well-known/appspecific/com.chrome.devtools.json"
+
+
+ WARN  [Vue Router warn]: No match found for location with path "/.well-known/appspecific/com.chrome.devtools.json"
+
+
+ WARN  [Vue Router warn]: No match found for location with path "/.well-known/appspecific/com.chrome.devtools.json"
+
+
+ WARN  [Vue Router warn]: No match found for location with path "/.well-known/appspecific/com.chrome.devtools.json"
+
+
+ WARN  [Vue Router warn]: No match found for location with path "/.well-known/appspecific/com.chrome.devtools.json"
+
+ℹ hmr update /pages/index.vue, /pages/index.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /components/LoginRegisterModal.vue
+ℹ hmr update /components/LoginRegisterModal.vue?vue&type=style&index=0&scoped=344b05a5&lang.css
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x2)
+ℹ hmr update /components/LoginRegisterModal.vue
+ℹ hmr update /components/LoginRegisterModal.vue (x2)
+ℹ hmr update /components/LoginRegisterModal.vue (x3)
+ℹ hmr update /components/LoginRegisterModal.vue (x4)
+ℹ hmr update /components/LoginRegisterModal.vue (x5)
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ page reload api/common.ts
+ℹ hmr update /pages/cart.vue, /pages/cart.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /pages/cart.vue, /pages/cart.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x2)
+ℹ hmr update /pages/cart.vue, /pages/cart.vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x3)
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x2)
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x3)
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x4)
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x5)
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs (x6)
+ℹ hmr update /pages/goods/[id].vue?vue&type=style&index=0&scoped=d27eafe8&lang.css, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+ℹ hmr update /components/AlipayQRPayModal.vue
+ℹ hmr update /components/WechatQRPayModal.vue
+ℹ hmr update /components/WechatQRPayModal.vue (x2)
+ℹ hmr update /pages/goods/[id].vue, /pages/goods/[id].vue?macro=true, /@id/virtual:nuxt:%2FUsers%2Fapple%2FDesktop%2Fproject%2Fnuxt-frontend%2F.nuxt%2Froutes.mjs
+[nuxi] ℹ .nuxt/dist directory has been removed. Restarting Nuxt...
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:86:7)
+    at NuxtDevServer.emit (nod
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:86:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:125:10)
+    at NuxtDevServer.load (node_modules/@nuxt/cli/dist  ➜ DevTools: press Shift + Option + D in the browser (v2.6.0)
+
+✔ Vite client built in 73ms
+✔ Vite server built in 4785ms
+[nuxt] ℹ Compiled plugins.server.mjs in 3443.4ms
+[nuxt] ℹ Compiled plugins.client.mjs in 3974.23ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 4069.66ms
+[nuxt] ℹ Compiled plugins.server.mjs in 1836.67ms
+[nuxt] ℹ Compiled plugins.client.mjs in 2602.05ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 15231.75ms
+[nitro] ✔ Nuxt Nitro server built in 24110ms
+ℹ Vite client warmed up in 28ms
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:92:[nitro] ✔ Nuxt Nitro server built in 33433ms
+ℹ Vite client warmed up in 19ms
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:92:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:231:10)
+    at async NuxtDevSe[nitro] ✔ Nuxt Nitro server built in 34456ms
+ℹ Vite client warmed up in 66ms
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-chℹ Vite server warmed up in 3888ms
+<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:92:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:231:10)
+    at async NuxtDevServer.load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:111:7)
+    at async _applyPromised (node_modules/perfect-debounce/dist/index.mjs:54:10)
+
+[nuxt] ℹ Compiled plugins.server.mjs in 1039.07ms
+[nuxt] ℹ Compiled plugins.client.mjs in 2156.18ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 3709.55ms
+ℹ Vite server warmed up in 4059ms
+plugins.client.mjs in 3903.21ms
+ℹ Vite server warmed up in 5531ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 3910.27ms
+ex.mjs:19:25
+    at <anonymous>
+
+ℹ Vite server warmed up in 1040ms
+  ➜ DevTools: press Shift + Option + D in the browser (v2.6.0)
+
+✔ Vite client built in 19ms
+✔ Vite server built in 429ms
+[nitro] ✔ Nuxt Nitro server built in 330ms
+ℹ Vite client warmed up in 2ms
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:92:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:231:10)
+    at async NuxtDevServer.load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:111:7)
+    at async _applyPromised (node_modules/perfect-debounce/dist/index.mjs:54:10)
+
+ℹ Vite server warmed up in 902ms
+[nuxi] ℹ .nuxt/dist directory has been removed. Restarting Nuxt...
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:86:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:125:10)
+    at NuxtDevServer.load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:111:18)
+    at _applyPromised (node_modules/perfect-debounce/dist/index.mjs:54:19)
+    at applyFn (node_modules/perfect-debounce/dist/index.mjs:15:22)
+    at Timeout._onTimeout (node_modules/perfect-debounce/dist/index.mjs:38:58)
+    at listOnTimeout (node:internal/timers:588:17)
+
+  ➜ DevTools: press Shift + Option + D in the browser (v2.6.0)
+
+✔ Vite client built in 119ms
+✔ Vite server built in 5105ms
+[nuxt] ℹ Compiled plugins.server.mjs in 3712.34ms
+[nuxt] ℹ Compiled plugins.client.mjs in 5173.26ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 5358.66ms
+[nuxt] ℹ Compiled runtime.vue-devtools-client.AmAA_KiBbMdYYrz6jFl0UEjCX_IbtkSiqw2SlS0rRlA.js in 542.57ms
+[nuxt] ℹ Compiled router.options.mjs in 604.01ms
+[nuxt] ℹ Compiled plugins.server.mjs in 1296.71ms
+[nuxt] ℹ Compiled plugins.client.mjs in 26013.11ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 26222.28ms
+[nitro] ✔ Nuxt Nitro server built in 34428ms
+ℹ Vite client warmed up in 52ms
+
+ ERROR  [uncaughtException] Channel closed
+
+    at target.send (node:internal/child_process:753:16)
+    at sendIPCMessage (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:47:17)
+    at NuxtDevServer.<anonymous> (node_modules/@nuxt/cli/dist/chunks/dev-child.mjs:92:7)
+    at NuxtDevServer.emit (node:events:518:28)
+    at NuxtDevServer._load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:231:10)
+    at async NuxtDevServer.load (node_modules/@nuxt/cli/dist/chunks/dev2.mjs:111:7)
+    at async _applyPromised (node_modules/perfect-debounce/dist/index.mjs:54:10)
+
+[nuxt] ℹ Compiled plugins.server.mjs in 2639.44ms
+[nuxt] ℹ Compiled plugins.client.mjs in 2877.28ms
+ℹ Vite server warmed up in 3668ms
+[nuxt] ℹ Compiled types/plugins.d.ts in 2894.78ms

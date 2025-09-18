@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/uploads/(.*)",
+      "dest": "/public/uploads/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "DATABASE_URL": "@database_url",
+    "JWT_SECRET": "@jwt_secret",
+    "WECHAT_MCHID": "@wechat_mchid",
+    "WECHAT_SERIAL_NO": "@wechat_serial_no",
+    "WECHAT_APIV3_KEY": "@wechat_apiv3_key",
+    "WECHAT_APPID": "@wechat_appid",
+    "ALIPAY_APP_ID": "@alipay_app_id",
+    "ALIPAY_PRIVATE_KEY": "@alipay_private_key",
+    "ALIPAY_PUBLIC_KEY": "@alipay_public_key",
+    "EMAIL_USER": "@email_user",
+    "EMAIL_PASS": "@email_pass",
+    "BREVO_API_KEY": "@brevo_api_key"
+  },
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30
+    }
+  }
+}
