@@ -308,12 +308,23 @@ const startServer = async () => {
       console.error('❌ 无法连接到数据库，请检查配置');
       console.log('📝 请确保MySQL服务正在运行，并在.env文件中配置正确的数据库连接信息');
     } else {
-      // 初始化数据库表
-      await initializeTables();
-      
-      // 同步数据库模型
-      await sequelize.sync({ alter: false });
-      console.log('✅ 数据库模型同步成功');
+      // 检查是否需要自动同步数据库
+      if (process.env.AUTO_SYNC_DB !== 'false') {
+        try {
+          // 初始化数据库表
+          await initializeTables();
+          
+          // 同步数据库模型 - 使用 force: false 避免删除现有数据
+          await sequelize.sync({ force: false, alter: false });
+          console.log('✅ 数据库模型同步成功');
+        } catch (error) {
+          console.error('⚠️ 数据库初始化失败，但服务继续运行:', error.message);
+          console.log('💡 提示: 设置环境变量 AUTO_SYNC_DB=false 来跳过自动同步');
+          console.log('💡 提示: 或手动运行 npm run db:init 来初始化数据库');
+        }
+      } else {
+        console.log('ℹ️ 跳过数据库自动同步 (AUTO_SYNC_DB=false)');
+      }
     }
 
     // 验证支付配置（静默处理）
